@@ -1,0 +1,72 @@
+[user]
+	name = Yugo Inutsuka
+	email = inutsuka-yugo947@g.ecc.u-tokyo.ac.jp
+[http]
+	sslVerify = false
+[credential]
+	helper = cache --timeout=3600000
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = vim
+	autoCRLF = false
+	autoLF = false
+[color]
+	ui = auto
+[alias]
+  sgl = log --oneline --graph --all --decorate
+  alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
+  rmt = remote
+  rmtad = remote add
+  rmtao = remote add origin
+  br = branch
+  brr = branch -r
+  ad = add
+  aa = add *
+  cm = commit
+  ca = commit -a
+  cmm = commit --amend
+  co = checkout
+  mas = checkout master
+  our = checkout --ours
+  ours = checkout --ours
+  their = checkout --theirs
+  theirs = checkout --theirs
+  ps = push
+  psmas = push origin master
+  psy = push origin yugo
+  psw = push origin win
+  pstag = push origin --tag
+  psgen = push origin MR2-2
+  pl = pull
+  plmas = pull origin master
+  f = fetch
+  st = status
+  rs = reset HEAD
+  rsh = reset HEAD --hard
+  rs1 = reset HEAD^
+  rs2 = reset HEAD^^
+  d = diff
+  d1 = diff HEAD~
+  d2 = diff HEAD~2
+  d3 = diff HEAD~3
+  in = init
+  del = update-index --assume-unchanged
+  rf = reflog
+  rev = revert
+  rc = rm --config
+  chp = cherry-pick
+  find = ls-files
+  cl = clone
+  fb = filter-branch --tree-filter
+  glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --name-status
+  gloga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --name-status
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=local --name-status
+  rmtco = remote set-url origin 
+  sm = submodule
+[push]
+  default = simple
+  recurseSubmodules = check
+[merge]
+	ff = false
+[pull]
+	ff = only
