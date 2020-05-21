@@ -279,12 +279,12 @@ alias ginit='git init; echo "*.a\na\n*.cfg\n~$*" > .gitignore; git add .gitignor
 
 alias run='source ~/.*rc'
 alias home='cd /mnt/c/Users/yugo'
-alias cad='cd /mnt/c/Users/yugo/Documents/ut/robotech/CAD/'
-alias 3s='cd /mnt/c/Users/yugo/Documents/ut/study/3s'
-alias 3a='cd /mnt/c/Users/yugo/Documents/ut/study/3a'
-alias 4s='cd /mnt/c/Users/yugo/Documents/ut/study/4s'
-alias 4a='cd /mnt/c/Users/yugo/Documents/ut/study/4a'
-alias 5s='cd /mnt/c/Users/yugo/Documents/ut/study/5s'
+alias 3s='cd /mnt/c/Users/yugo/Documents/study/3s'
+alias 3a='cd /mnt/c/Users/yugo/Documents/study/3a'
+alias 4s='cd /mnt/c/Users/yugo/Documents/study/4s'
+alias 4a='cd /mnt/c/Users/yugo/Documents/study/4a'
+alias 5s='cd /mnt/c/Users/yugo/Documents/study/5s'
+alias yok='cd /mnt/c/Users/yugo/Documents/study/yokada_lab'
 alias cr='cd /mnt/c/Users/yugo/Documents/CR'
 
 alias g='git'
