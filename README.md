@@ -2,6 +2,7 @@
 dotfiles of inutsuka-yugo
 
 # Usage
-- `git clone https://github.com/inutsuka-yugo/dotfiles_yi.git`
 - `cd ~`
+- `git clone https://github.com/inutsuka-yugo/dotfiles_yi.git`
+- `cd dotfiles_yi`
 - `./setup.sh`
