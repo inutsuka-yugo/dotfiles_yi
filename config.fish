@@ -143,6 +143,13 @@ alias sshker="ssh ubuntu@3.16.89.76 -L 8888:localhost:8888 -p 2211"
 
 #conda activate physics
 
+#fisher
+if not functions -q fisher
+	set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+	curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+  	fish -c fisher
+end
+
 #bobthefish https://stackoverflow.com/questions/52297324/bobthefish-no-longer-displaying-correctly-for-mercurial-works-fine-for-git/52300013
 set -g theme_display_git_ahead_verbose yes 
 set -g theme_display_git_dirty_verbose yes 
