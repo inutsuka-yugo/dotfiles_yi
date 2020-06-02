@@ -76,7 +76,7 @@ alias 3a='cd /mnt/c/Users/yugo/Documents/study/3a'
 alias 4s='cd /mnt/c/Users/yugo/Documents/study/4s'
 alias 4a='cd /mnt/c/Users/yugo/Documents/study/4a'
 alias 5s='cd /mnt/c/Users/yugo/Documents/study/5s'
-alias yok='cd /mnt/c/Users/yugo/Documents/study/okada_lab'
+alias yok='cd /mnt/c/Users/yugo/Documents/study/yokada_lab'
 alias cr='cd /mnt/c/Users/yugo/Documents/CR'
 
 alias g='git'
