@@ -59,6 +59,8 @@ alias showpath='python -c "import os; print(\"\n\".join(os.environ[\"PATH\"].spl
 
 alias search='find ./ -type f -name'
 
+alias snip='code /home/yugo/.local/share/jupyter/nbextensions/snippets/custom.json'
+
 set -x DISPLAY localhost:0.0
 
 # eval 'dircolors ~/.colorrc -b'
@@ -77,11 +79,13 @@ alias 4s='cd /mnt/c/Users/yugo/Documents/study/4s'
 alias 4a='cd /mnt/c/Users/yugo/Documents/study/4a'
 alias 5s='cd /mnt/c/Users/yugo/Documents/study/5s'
 alias yok='cd /mnt/c/Users/yugo/Documents/study/yokada_lab'
+alias pythonyok='cd /mnt/c/Users/yugo/Documents/study/yokada_lab/python; conda activate yok'
 alias cr='cd /mnt/c/Users/yugo/Documents/CR'
 
 alias g='git'
 alias gitignore='vim .gitignore'
 alias gi='gitignore'
+alias gfb='~/git_find_big.sh'
 
 alias ud='sudo apt update'
 alias ug='sudo apt upgrade -y'
@@ -91,6 +95,7 @@ alias unins='sudo apt remove'
 
 alias desk='cd /mnt/c/Users/yugo/Desktop'
 alias doc='cd /mnt/c/Users/yugo/Documents'
+alias down='cd /mnt/c/Users/yugo/Downloads'
 alias pic='cd /mnt/c/Users/yugo/Pictures'
 alias pr='cd /mnt/c/Users/yugo/Pictures/robotech/'
 alias tx='cd /mnt/c/Users/yugo/Documents/tex;'
@@ -168,4 +173,10 @@ set -g theme_show_exit_status yes
 set -g default_user xxx 
 set -g theme_project_dir_length 1 
 set -g theme_newline_cursor yes
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /home/yugo/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
 
