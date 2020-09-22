@@ -8,4 +8,5 @@ for file in ${DOT_FILES[@]}
 	done
 
 ln -s $HOME/dotfiles_yi/config.fish $HOME/.config/fish
+ln -s $HOME/dotfiles_yi/custom.js $HOME/.jupyter/custom
 
