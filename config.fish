@@ -95,6 +95,7 @@ alias unins='sudo apt remove'
 
 alias desk='cd /mnt/c/Users/yugo/Desktop'
 alias doc='cd /mnt/c/Users/yugo/Documents'
+alias vid='cd /mnt/c/Users/yugo/Videos'
 alias down='cd /mnt/c/Users/yugo/Downloads'
 alias pic='cd /mnt/c/Users/yugo/Pictures'
 alias pr='cd /mnt/c/Users/yugo/Pictures/robotech/'
