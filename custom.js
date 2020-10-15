@@ -114,6 +114,12 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                     "param, cov = curve_fit(fit, xs, ys)",
                     "ys_fit = fit(xs, *param)"
                 ]
+            },
+            {
+                "name": "mkdir",
+                "snippet": [
+                    "os.makedirs(dir_name, exist_ok=True)"
+                ]
             }
         ]
     };
@@ -352,6 +358,17 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 ]
             },
             {
+                "name": "deque",
+                "snippet": [
+                 "from collections import deque",
+                 "# q = deque([0])",
+                 "# while q:",
+                 "#     x = q.pop()",
+                 "#     q.append(1)",
+                 "#     y = q.popleft()"
+                ]
+            },
+            {
                 "name": "BFS",
                 "snippet": [
                     "from collections import deque",
@@ -381,6 +398,15 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                     "    print(\"-1\")",
                     "else:",
                     "    print(c[gy-1][gx-1])"
+                ]
+            },
+            {
+                "name": "accumulate",
+                "snippet": [
+                "from itertools import accumulate",
+                "",
+                "def accum_list(ls):",
+                "    return list(accumulate(ls))"
                 ]
             }
         ]
