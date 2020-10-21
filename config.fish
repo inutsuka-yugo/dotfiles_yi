@@ -61,7 +61,8 @@ alias search='find ./ -type f -name'
 
 alias snip='code /home/yugo/.local/share/jupyter/nbextensions/snippets/custom.json'
 
-set -x DISPLAY localhost:0.0
+# set -x DISPLAY localhost:0.0
+set -x DISPLAY (cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 
 # eval 'dircolors ~/.colorrc -b'
 #↑なぜかうまくいかない
@@ -113,7 +114,7 @@ alias gnp='"/mnt/c/Program Files (x86)/Xming/Xming.exe" :0 -clipboard -multiwind
 alias gnup='gnuplot'
 alias tm=tmux
 
-alias firefox='/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
+#alias firefox='/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
 
 #robotech
 alias sshar='ssh robotech@10.10.10.23'
@@ -181,3 +182,4 @@ set -g theme_newline_cursor yes
 eval /home/yugo/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
+set -x PATH '/mnt/c/Program Files (x86)/Xming' $PATH
