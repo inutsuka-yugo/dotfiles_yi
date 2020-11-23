@@ -38,7 +38,6 @@ alias runghc="stack runghc"
 alias runhaskell="stack runhaskell"
 # ******
 
-alias haskell='cd /mnt/c/Users/yugo/Documents/programing/haskell/'
 alias hsk='haskell'
 alias e='exit;stty sane'
 alias q='exit;stty sane'
@@ -72,16 +71,8 @@ alias win='explorer.exe .'
 #alias init='init && echo "*.a\na\n*.cfg" > .gitignore'
 
 alias frun='source ~/.config/fish/config.fish'
-alias home='cd /mnt/c/Users/yugo'
-alias cad='cd /mnt/c/Users/yugo/Documents/CR/CAD/'
-alias 3s='cd /mnt/c/Users/yugo/Documents/study/3s'
-alias 3a='cd /mnt/c/Users/yugo/Documents/study/3a'
-alias 4s='cd /mnt/c/Users/yugo/Documents/study/4s'
-alias 4a='cd /mnt/c/Users/yugo/Documents/study/4a'
-alias 5s='cd /mnt/c/Users/yugo/Documents/study/5s'
-alias yok='cd /mnt/c/Users/yugo/Documents/study/yokada_lab'
-alias pythonyok='cd /mnt/c/Users/yugo/Documents/study/yokada_lab/python; conda activate yok'
-alias cr='cd /mnt/c/Users/yugo/Documents/CR'
+alias yok='cd ~/yokada_lab'
+alias pythonyok='cd ~/yokada_lab/python; conda activate yok'
 
 alias g='git'
 alias gitignore='vim .gitignore'
@@ -94,15 +85,7 @@ alias autorm='sudo apt autoremove -y'
 alias ins='sudo apt install'
 alias unins='sudo apt remove'
 
-alias desk='cd /mnt/c/Users/yugo/Desktop'
-alias doc='cd /mnt/c/Users/yugo/Documents'
-alias vid='cd /mnt/c/Users/yugo/Videos'
-alias down='cd /mnt/c/Users/yugo/Downloads'
-alias pic='cd /mnt/c/Users/yugo/Pictures'
-alias pr='cd /mnt/c/Users/yugo/Pictures/robotech/'
-alias tx='cd /mnt/c/Users/yugo/Documents/tex;'
 alias lt='latexmk -pvc'
-alias c='cd /mnt/c'
 alias xming='Xming.exe'
 
 alias xelatex='xelatex.exe'

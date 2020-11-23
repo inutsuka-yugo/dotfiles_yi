@@ -305,7 +305,7 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
         "sub-menu": [
             {
                 "name": "1行に複数の整数の入力",
-                "snippet": "map(int, input().split())"
+                "snippet": "list(map(int, input().split()))"
             },
             {
                 "name": "$l$行の整数の入力",
@@ -369,6 +369,29 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 ]
             },
             {
+                "name": "Combination",
+                "snippet": [
+                "MOD = 998244353",
+                "table_len = 301 # nCk の max(n)+1",
+                "",
+                "fac = [1, 1]",
+                "for i in range(2, table_len):",
+                "    fac.append(fac[-1] * i % MOD)",
+                "",
+                "finv = [0] * table_len",
+                "finv[-1] = pow(fac[-1], MOD - 2, MOD)",
+                "",
+                "for i in range(table_len - 1, 0, -1):",
+                "    finv[i - 1] = finv[i] * i % MOD",
+                "",
+                "",
+                "def comb(n, k):",
+                "    return fac[n] * finv[k] * finv[n - k] % MOD",
+                "",
+                "inv2 = pow(2, MOD-2, MOD)"
+                ]
+            },
+            {
                 "name": "BFS",
                 "snippet": [
                     "from collections import deque",
@@ -386,7 +409,7 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                     "q = deque([(sy-1, sx-1)])",
                     "",
                     "while q:",
-                    "    y,x = q.pop()",
+                    "    y,x = q.popleft()",
                     "    cost = c[y][x]",
                     "    for dx,dy in drs:",
                     "        x2 = x+dx",
@@ -401,12 +424,74 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 ]
             },
             {
+                "name": "BFS with teleport",
+                "snippet": [
+                "Y, X = list(map(int, input().split()))",
+                "",
+                "from collections import deque",
+                "",
+                "tele = [[] for _ in range(26)]",
+                "",
+                "s = [list(input()) for _ in range(Y)] ",
+                "",
+                "orda = ord('a')",
+                "",
+                "for y in range(Y):",
+                "    for x in range(X):",
+                "        if s[y][x] == 'S':",
+                "            sx, sy = x, y",
+                "        elif s[y][x] == 'G':",
+                "            gx, gy = x, y",
+                "        elif not s[y][x] in '.#':",
+                "            tele[ord(s[y][x]) - orda].append([y, x])",
+                "",
+                "inf = Y * X",
+                "c = [[inf] * X for _ in range(Y)]",
+                "",
+                "c[sy][sx] = 0",
+                "drs = [(-1, 0), (1, 0), (0, -1), (0, 1)]",
+                "q = deque([(sy, sx)])",
+                "",
+                "while q:",
+                "    y, x = q.popleft()",
+                "    cost = c[y][x] + 1",
+                "    for dx, dy in drs:",
+                "        x2 = x + dx",
+                "        y2 = y + dy",
+                "        if x2 >= 0 and x2 < X and y2 >= 0 and y2 < Y and s[y2][x2] != '#':",
+                "            if c[y2][x2] > cost:",
+                "                c[y2][x2] = cost",
+                "                q.append((y2, x2))",
+                "    if s[y][x].islower():",
+                "        for y3, x3 in tele[ord(s[y][x]) - orda]:",
+                "            if c[y3][x3] > cost:",
+                "                q.append((y3, x3))",
+                "                c[y3][x3] = cost",
+                "            tele[ord(s[y][x]) - orda] = []",
+                "if c[gy][gx] == inf:",
+                "    print(-1)",
+                "else:",
+                "    print(c[gy][gx])",
+                "# for c1 in c:",
+                "#     print(c1)",
+                "# print(dic)"
+                ]
+            },
+            {
                 "name": "accumulate",
                 "snippet": [
                 "from itertools import accumulate",
                 "",
                 "def accum_list(ls):",
                 "    return list(accumulate(ls))"
+                ]
+            },
+            {
+                "name": "順列",
+                "snippet": [
+                    "from itertools import permutations",
+                    "",
+                    "list(permutations(range(5)))"
                 ]
             }
         ]

@@ -278,14 +278,6 @@ alias win='explorer.exe .'
 alias ginit='git init; echo "*.a\na\n*.cfg\n~$*" > .gitignore; git add .gitignore; git commit'
 
 alias run='source ~/.*rc'
-alias home='cd /mnt/c/Users/yugo'
-alias 3s='cd /mnt/c/Users/yugo/Documents/study/3s'
-alias 3a='cd /mnt/c/Users/yugo/Documents/study/3a'
-alias 4s='cd /mnt/c/Users/yugo/Documents/study/4s'
-alias 4a='cd /mnt/c/Users/yugo/Documents/study/4a'
-alias 5s='cd /mnt/c/Users/yugo/Documents/study/5s'
-alias yok='cd /mnt/c/Users/yugo/Documents/study/yokada_lab'
-alias cr='cd /mnt/c/Users/yugo/Documents/CR'
 
 alias g='git'
 alias gitignore='vim .gitignore'
@@ -297,11 +289,7 @@ alias autorm='sudo apt autoremove -y'
 alias ins='sudo apt install'
 alias unins='sudo apt remove'
 
-alias desk='cd /mnt/c/Users/yugo/Desktop'
-alias doc='cd /mnt/c/Users/yugo/Documents'
-alias pic='cd /mnt/c/Users/yugo/Pictures'
 alias lt='latexmk -pvc'
-alias c='cd /mnt/c'
 alias xming='/mnt/c/Program\ Files\ \(x86\)/Xming/Xming.exe'
 
 #convert
