@@ -3,8 +3,10 @@ require([
 ], function() {
    CodeMirror.Vim.map("<C-a>", "ggVG", "normal");
 });
+
 require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
     console.log('Loading `snippets_menu` customizations from `custom.js`');
+
     var horizontal_line = '---';
     var my_favorites = {
         "name": "templates",
@@ -300,8 +302,8 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
             }
         ]
     };
-    var my_favorites5 = {
-        "name": "競プロ",
+    var compe1 = {
+        "name": "I/O",
         "sub-menu": [
             {
                 "name": "1行に複数の整数の入力",
@@ -319,12 +321,11 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                     "[list(map(int, input().split())) for _ in range(N)]"
                 ]
             },
-            {
-                "name": "print",
-                "snippet": [
-                    "print(\"{}\".format(a))"
-                ]
-            },
+        ]
+    };
+    var compe2 = {
+        "name": "Basic algorithms",
+        "sub-menu": [
             {
                 "name": "素数",
                 "snippet": [
@@ -392,7 +393,7 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 ]
             },
             {
-                "name": "BFS",
+                "name": "BFS on 2D map",
                 "snippet": [
                     "from collections import deque",
                     "",
@@ -424,7 +425,7 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 ]
             },
             {
-                "name": "BFS with teleport",
+                "name": "BFS on 2D map w/ teleport",
                 "snippet": [
                 "Y, X = list(map(int, input().split()))",
                 "",
@@ -493,15 +494,113 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                     "",
                     "list(permutations(range(5)))"
                 ]
+            },
+            {
+                "name": "graph",
+                "snippet": [
+                "from collections import deque",
+                "",
+                "N = int(input())",
+                "ab = [[0] * 2 for _ in range(N - 1)]  # edge a -> b",
+                "for i in range(N - 1):",
+                "    a, b = list(map(int, input().split()))",
+                "    ab[i] = [a - 1, b - 1]",
+                "nb = [set() for _ in range(N)]  # neighbor",
+                "for a, b in ab:",
+                "    nb[b].add(a)",
+                "",
+                "# DFS (Depth First Search)",
+                "visited = {}",
+                "q = deque([start])",
+                "while q:",
+                "    at = q.pop()",
+                "    if at in visited:",
+                "        continue",
+                "    if at != start:",
+                "        #####",
+                "    visited.add(at)",
+                "    for nb1 in nb[at]:",
+                "        q.append(nb1)",
+                "",
+                "# BFS (Breadth First Search)",
+                "visited = {}",
+                "q = deque([start])",
+                "while q:",
+                "    at = q.popleft()",
+                "    if at in visited:",
+                "        continue",
+                "    if at != start:",
+                "        #####",
+                "    visited.add(at)",
+                "    for nb1 in nb[at]:",
+                "        q.append(nb1)"
+                ]
+            },
+            {
+                "name": "tree",
+                "snippet": [
+                "from collections import deque",
+                "",
+                "N = int(input())",
+                "ab = [[0] * 2 for _ in range(N - 1)]  # edge a -> b",
+                "for i in range(N - 1):",
+                "    a, b = list(map(int, input().split()))",
+                "    ab[i] = [a - 1, b - 1]",
+                "nb = [set() for _ in range(N)]  # neighbor",
+                "for a, b in ab:",
+                "    nb[b].add(a)",
+                "    nb[a].add(b)",
+                "",
+                "# check depth",
+                "depth = [-1] * N",
+                "depth[0] = 0  # root is 0",
+                "q = [0]",
+                "while q:",
+                "    at = q.pop()",
+                "    for i in nb[at]:",
+                "        if depth[i] == -1:",
+                "            depth[i] = depth[at] + 1",
+                "            q.append(i)",
+                "",
+                "# DFS (Depth First Search)",
+                "q = deque([0])",
+                "while q:",
+                "    at = q.pop()",
+                "    d = depth[at]",
+                "    for to in nb[at]:",
+                "        if depth[to] > d:  # go deeper and deeper (instead of checking visited)",
+                "            q.append(to)",
+                "            #####",
+                "",
+                "# BFS (Breadth First Search)",
+                "q = deque([0])",
+                "while q:",
+                "    at = q.popleft()",
+                "    d = depth[at]",
+                "    for to in nb[at]:",
+                "        if depth[to] > d:  # go deeper and deeper (instead of checking visited)",
+                "            q.append(to)",
+                "            #####"
+                ]
             }
         ]
     };
+
+    // snippets_menu.default_menus[0]['sub-menu'].splice(3, 2); // Remove SymPy and pandas
+    // snippets_menu.python.numpy['sub-menu-direction'] = 'left'; // Point new Numpy menus to left
+    // snippets_menu.options['menus'].push(snippets_menu.default_menus[0]); // Start with the remaining "Snippets" menu
+    // snippets_menu.options['menus'].push(snippets_menu.python.numpy); // Follow that with a new Numpy menu
+    // snippets_menu.options['menus'].push(snippets_menu.python.scipy);
+    // snippets_menu.options['menus'].push(snippets_menu.python.matplotlib);
+
     snippets_menu.options['menus'] = snippets_menu.default_menus;
     snippets_menu.options['menus'][0]['sub-menu'].push(horizontal_line);
+    // snippets_menu.options['menus'].push(my_favorites);
     snippets_menu.options['menus'][0]['sub-menu'].push(my_favorites);
     snippets_menu.options['menus'][0]['sub-menu'].push(my_favorites2);
     snippets_menu.options['menus'][0]['sub-menu'].push(my_favorites3);
     snippets_menu.options['menus'][0]['sub-menu'].push(my_favorites4);
-    snippets_menu.options['menus'][0]['sub-menu'].push(my_favorites5);
+    snippets_menu.options['menus'].push(compe1);
+    snippets_menu.options['menus'].push(compe2);
     console.log('Loaded `snippets_menu` customizations from `custom.js`');
 });
