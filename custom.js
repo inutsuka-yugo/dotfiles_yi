@@ -40,6 +40,15 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 ]
             },
             {
+                "name": "defaultdict",
+                "snippet": [
+                "from collections import defaultdict",
+                "dic = defaultdict(int)",
+                "",
+                "for k, v in sorted(dic.items()):"
+                ]
+            },
+            {
                 "name": "fitting histogram",
                 "snippet": [
                     "histdata, bins = np.histogram(data, how_many_bins, [min, max], normed=True) # make histogram data",
@@ -501,7 +510,7 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 "from collections import deque",
                 "",
                 "N = int(input())",
-                "ab = [[0] * 2 for _ in range(N - 1)]  # edge a -> b",
+                "ab = [[0] * 2 for _ in range(N - 1)]  # edge a <-> b",
                 "for i in range(N - 1):",
                 "    a, b = list(map(int, input().split()))",
                 "    ab[i] = [a - 1, b - 1]",
@@ -542,7 +551,7 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 "from collections import deque",
                 "",
                 "N = int(input())",
-                "ab = [[0] * 2 for _ in range(N - 1)]  # edge a -> b",
+                "ab = [[0] * 2 for _ in range(N - 1)]  # edge a <-> b",
                 "for i in range(N - 1):",
                 "    a, b = list(map(int, input().split()))",
                 "    ab[i] = [a - 1, b - 1]",
@@ -582,6 +591,21 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 "            q.append(to)",
                 "            #####"
                 ]
+            },
+            {
+                "name": "巡回セールスマン",
+                "snippet": [
+                "INF = 1<<60",
+                "dp = [[INF] * k for _ in range(1<<k)]",
+                "for i in range(k):",
+                "    dp[1<<i][i] = 1",
+                "for s in range(1<<k):",
+                "    for i in range(k):",
+                "        for j in range(k):",
+                "            if s>>i & 1:",
+                "                if s>>j & 1:",
+                "                    dp[s][j] = min(dp[s][j], dp[s^(1<<j)][i] + dist[i][j])"
+                ]
             }
         ]
     };
@@ -596,10 +620,10 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
     snippets_menu.options['menus'] = snippets_menu.default_menus;
     snippets_menu.options['menus'][0]['sub-menu'].push(horizontal_line);
     // snippets_menu.options['menus'].push(my_favorites);
-    snippets_menu.options['menus'][0]['sub-menu'].push(my_favorites);
     snippets_menu.options['menus'][0]['sub-menu'].push(my_favorites2);
     snippets_menu.options['menus'][0]['sub-menu'].push(my_favorites3);
     snippets_menu.options['menus'][0]['sub-menu'].push(my_favorites4);
+    snippets_menu.options['menus'].push(my_favorites);
     snippets_menu.options['menus'].push(compe1);
     snippets_menu.options['menus'].push(compe2);
     console.log('Loaded `snippets_menu` customizations from `custom.js`');
