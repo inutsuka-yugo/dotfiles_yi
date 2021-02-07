@@ -131,6 +131,13 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 "snippet": [
                     "os.makedirs(dir_name, exist_ok=True)"
                 ]
+            },
+            {
+                "name": "Decimal",
+                "snippet": [
+                    "from decimal import *",
+                    "x = Decimal(x)"
+                ]
             }
         ]
     };
@@ -510,13 +517,14 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 "from collections import deque",
                 "",
                 "N = int(input())",
-                "ab = [[0] * 2 for _ in range(N - 1)]  # edge a <-> b",
-                "for i in range(N - 1):",
+                "ab = [[0] * 2 for _ in range(N)]  # edge a -> b",
+                "for i in range(N):",
                 "    a, b = list(map(int, input().split()))",
                 "    ab[i] = [a - 1, b - 1]",
                 "nb = [set() for _ in range(N)]  # neighbor",
                 "for a, b in ab:",
-                "    nb[b].add(a)",
+                "    nb[a].add(b)",
+                "    # nb[b].add(a) # if bidirectional",
                 "",
                 "# DFS (Depth First Search)",
                 "visited = {}",
@@ -551,14 +559,14 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 "from collections import deque",
                 "",
                 "N = int(input())",
-                "ab = [[0] * 2 for _ in range(N - 1)]  # edge a <-> b",
-                "for i in range(N - 1):",
+                "ab = [[0] * 2 for _ in range(N)]  # edge a -> b",
+                "for i in range(N):",
                 "    a, b = list(map(int, input().split()))",
                 "    ab[i] = [a - 1, b - 1]",
                 "nb = [set() for _ in range(N)]  # neighbor",
                 "for a, b in ab:",
-                "    nb[b].add(a)",
                 "    nb[a].add(b)",
+                "    # nb[b].add(a) # if bidirectional",
                 "",
                 "# check depth",
                 "depth = [-1] * N",
@@ -590,6 +598,47 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 "        if depth[to] > d:  # go deeper and deeper (instead of checking visited)",
                 "            q.append(to)",
                 "            #####"
+                ]
+            },
+            {
+                "name": "dijkstra",
+                "snippet": [
+                "from heapq import *",
+                "INF = float('inf')",
+                "",
+                "def dijkstra(N, start, cost_nb):",
+                "    hq = [(0, start)]",
+                "    cost = [INF] * N",
+                "    cost[start] = 0",
+                "    ret = INF",
+                "    while hq:",
+                "        c, at = heappop(hq)",
+                "        if c > cost[at]:",
+                "            continue",
+                "        for d, to in cost_nb[at]:",
+                "            tmp = d + cost[at]",
+                "            if to == start:",
+                "                ret = min(ret, tmp)",
+                "            if cost[to] > tmp:",
+                "                cost[to] = tmp",
+                "                heappush(hq, (tmp, to))",
+                "    return ret",
+                "",
+                "",
+                "def dijkstra_sg(N, start, goal, cost_nb):",
+                "    hq = [(0, start)]",
+                "    cost = [INF] * N",
+                "    cost[start] = 0",
+                "    while hq:",
+                "        c, at = heappop(hq)",
+                "        if c > cost[at]:",
+                "            continue",
+                "        for d, to in cost_nb[at]:",
+                "            tmp = d + cost[at]",
+                "            if cost[to] > tmp:",
+                "                cost[to] = tmp",
+                "                heappush(hq, (tmp, to))",
+                "    return cost[goal]"
                 ]
             },
             {
