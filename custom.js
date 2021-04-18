@@ -8,46 +8,9 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
     console.log('Loading `snippets_menu` customizations from `custom.js`');
 
     var horizontal_line = '---';
-    var my_favorites = {
-        "name": "templates",
+    var data_analysis = {
+        "name": "data analysis",
         "sub-menu": [
-            {
-                "name": "flatten",
-                "snippet": [
-                    "import collections",
-                    "",
-                    "def flatten(l):",
-                    "    for el in l:",
-                    "        if isinstance(el, collections.abc.Iterable) and not isinstance(el, (str, bytes)):",
-                    "            yield from flatten(el)",
-                    "        else:",
-                    "            yield el"
-                ]
-            },
-            {
-                "name": "sort_index",
-                "snippet": [
-                    "def sort_index(ls):",
-                    "        return sorted(range(len(ls)), key=lambda k: ls[k])"
-                ]
-            },
-            {
-                "name": "argmax",
-                "snippet": [
-                    "def argmax(ls):",
-                    "    return ls.index(max(ls))"
-
-                ]
-            },
-            {
-                "name": "defaultdict",
-                "snippet": [
-                "from collections import defaultdict",
-                "dic = defaultdict(int)",
-                "",
-                "for k, v in sorted(dic.items()):"
-                ]
-            },
             {
                 "name": "fitting histogram",
                 "snippet": [
@@ -131,12 +94,197 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 "snippet": [
                     "os.makedirs(dir_name, exist_ok=True)"
                 ]
+            }
+        ]
+    };
+    var my_favorites = {
+        "name": "templates",
+        "sub-menu": [
+            {
+                "name": "defaultdict",
+                "snippet": [
+                "from collections import defaultdict",
+                "dic = defaultdict(int)",
+                "",
+                "for k, v in sorted(dic.items()):"
+                ]
             },
             {
                 "name": "Decimal",
                 "snippet": [
                     "from decimal import *",
                     "x = Decimal(x)"
+                ]
+            },
+            {
+                "name": "deque",
+                "snippet": [
+                 "from collections import deque",
+                 "# q = deque([0])",
+                 "# while q:",
+                 "#     x = q.pop()",
+                 "#     q.append(1)",
+                 "#     y = q.popleft()"
+                ]
+            },
+            {
+                "name": "priority queue",
+                "snippet": [
+                "from heapq import *",
+                "",
+                "hq = []",
+                "heappush(hq, (1, x))",
+                "t, x = heappop(hq)"
+                ]
+            },
+            {
+                "name": "accumulate",
+                "snippet": [
+                "from itertools import accumulate",
+                "",
+                "def accum_list(ls):",
+                "    return list(accumulate(ls))"
+                ]
+            },
+            {
+                "name": "組み合わせ（順序なし）",
+                "snippet": [
+                    "from itertools import combinations",
+                    "",
+                    "list(combinations(range(5)))"
+                ]
+            },
+            {
+                "name": "順列（順序あり）",
+                "snippet": [
+                    "from itertools import permutations",
+                    "",
+                    "list(permutations(range(5)))"
+                ]
+            },
+            {
+                "name": "Combination, nCk",
+                "snippet": [
+                "# https://qiita.com/derodero24/items/91b6468e66923a87f39f",
+                "from scipy.special import comb",
+                "# a = comb(n, r)",
+                "a = comb(n, r, exact=True)",
+                "",
+                "# nCk の max(n) が決まっていて、何度も計算する場合",
+                "MOD = 998244353",
+                "table_len = 301 # nCk の max(n)+1",
+                "",
+                "fac = [1, 1]",
+                "for i in range(2, table_len):",
+                "    fac.append(fac[-1] * i % MOD)",
+                "",
+                "finv = [0] * table_len",
+                "finv[-1] = pow(fac[-1], MOD - 2, MOD)",
+                "",
+                "for i in range(table_len - 1, 0, -1):",
+                "    finv[i - 1] = finv[i] * i % MOD",
+                "",
+                "",
+                "def comb(n, k):",
+                "    return fac[n] * finv[k] * finv[n - k] % MOD",
+                "",
+                "inv2 = pow(2, MOD-2, MOD)"
+                ]
+            },
+            {
+                "name": "b進数",
+                "snippet": [
+                "# base 10 --> base b (list)",
+                "def shinsu(n, b):",
+                "    ans = []",
+                "    sho, amari = divmod(n, b)",
+                "    ans.append(amari)",
+                "    while sho > 0:",
+                "        sho, amari = divmod(sho, b)",
+                "        ans.append(amari)",
+                "    return ans[::-1]",
+                "",
+                "# base b (list) --> base 10",
+                "def bshinsu(l, b):",
+                "    ans = 0",
+                "    base = 1",
+                "    for l1 in l[::-1]:",
+                "        ans += l1 * base",
+                "        base *= b",
+                "    return ans"
+                ]
+            },
+            {
+                "name": "最大公約数、最小公倍数",
+                "snippet": [
+                "import fractions",
+                "a,b=map(int, input().split())",
+                "f=fractions.gcd(a,b) #最大公約数",
+                "f2=a*b//f #最小公倍数"
+                ]
+            },
+            {
+                "name": "約数",
+                "snippet": [
+                "def divisors(M):",
+                "    d = []",
+                "    i = 1",
+                "    while M >= i**2:",
+                "        if M % i == 0:",
+                "            d.append(i)",
+                "            if i**2 != M:",
+                "                d.append(M // i)",
+                "        i = i + 1",
+                "    return d"
+                ]
+            },
+            {
+                "name": "素数の列挙",
+                "snippet": [
+                "def prime_list(n): # list of prime numbers < n (by Sieve of Eratosthenes)",
+                "    res = [0 for i in range(n + 1)]",
+                "    prime = set([])",
+                "    for i in range(2, n + 1):",
+                "        if not res[i]:",
+                "            prime.add(i)",
+                "            for j in range(1, n // i + 1):",
+                "                res[i * j] = 1",
+                "    return prime"
+                ]
+            },
+            {
+                "name": "素因数分解→辞書へ",
+                "snippet": [
+                "def pf(m): # prime factorization",
+                "    pfs = {}",
+                "    for i in range(2, int(m**0.5) + 1):",
+                "        while m % i == 0:",
+                "            pfs[i] = pfs.get(i, 0) + 1",
+                "            m //= i",
+                "    if m > 1: pfs[m] = 1",
+                "    return pfs",
+                "",
+                "pf(341555136)"
+                ]
+            },
+            {
+                "name": "merge_sort",
+                "snippet": [
+                "def merge_sort(A, B):",
+                "    pos_A, pos_B = 0, 0",
+                "    n, m = len(A), len(B)",
+                "    res = []",
+                "    while pos_A < n and pos_B < m:",
+                "        a, b = A[pos_A], B[pos_B]",
+                "        if a < b:",
+                "            res.append(a)",
+                "            pos_A += 1",
+                "        else:",
+                "            res.append(b)",
+                "            pos_B += 1",
+                "    res += A[pos_A:]",
+                "    res += B[pos_B:]",
+                "    return res"
                 ]
             }
         ]
@@ -318,96 +466,88 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
             }
         ]
     };
-    var compe1 = {
+    var lists = {
+        "name": "lists",
+        "sub-menu": [
+            {
+                "name": "flatten",
+                "snippet": [
+                    "import collections",
+                    "",
+                    "def flatten(l):",
+                    "    for el in l:",
+                    "        if isinstance(el, collections.abc.Iterable) and not isinstance(el, (str, bytes)):",
+                    "            yield from flatten(el)",
+                    "        else:",
+                    "            yield el"
+                ]
+            },
+            {
+                "name": "sort_index and ranking",
+                "snippet": [
+                    "def sort_index(ls):",
+                    "        return sorted(range(len(ls)), key=lambda k: ls[k])",
+                    "",
+                    "def ranking(ls):",
+                    "    return sort_index(sort_index(ls))",
+                    "",
+                    "a = [43, 91, 3535, 53]",
+                    "a, sort_index(a), ranking(a)"
+                ]
+            },
+            {
+                "name": "argmax",
+                "snippet": [
+                    "def argmax(ls):",
+                    "    return ls.index(max(ls))"
+
+                ]
+            },
+            {
+                "name": "transpose",
+                "snippet": [
+                "def transpose_tuple(l_2d):",
+                "    return list(zip(*l_2d))",
+                "",
+                "def transpose(l_2d):",
+                "    return [list(x) for x in zip(*l_2d)]"
+                ]
+            }
+        ]
+    }
+    var compe_io = {
         "name": "I/O",
         "sub-menu": [
             {
                 "name": "1行に複数の整数の入力",
-                "snippet": "list(map(int, input().split()))"
+                "snippet": " list(map(int, input().split()))"
             },
             {
                 "name": "$l$行の整数の入力",
-                "snippet": [
-                    "[int(input()) for _ in range(l)]"
-                ]
+                "snippet": " [int(input()) for _ in range(l)]"
             },
             {
                 "name": "$N$行の行列",
+                "snippet": " [list(map(int, input().split())) for _ in range(N)]"
+            },
+            {
+                "name": "faster input",
                 "snippet": [
-                    "[list(map(int, input().split())) for _ in range(N)]"
+                "from sys import stdin",
+                "input = stdin.readline"
                 ]
             },
+            {
+                "name": "multiline output",
+                "snippet": [
+                    "print(*ans, sep='\\n')"
+                ]
+            }
         ]
     };
-    var compe2 = {
+    var compe_basic = {
         "name": "Basic algorithms",
         "sub-menu": [
-            {
-                "name": "素数",
-                "snippet": [
-                "n = 100",
-                "primes = set(range(2, n+1))",
-                "for i in range(2, int(n**0.5+1)):",
-                "    primes.difference_update(range(i*2, n+1, i))",
-                "primes=list(primes)"
-                ]
-            },
-            {
-                "name": "最大公約数、最小公倍数",
-                "snippet": [
-                "import fractions",
-                "a,b=map(int, input().split())",
-                "f=fractions.gcd(a,b) #最大公約数",
-                "f2=a*b//f #最小公倍数"
-                ]
-            },
-            {
-                "name": "素因数分解→辞書へ",
-                "snippet": [
-                "pf={}",
-                "m=341555136",
-                "for i in range(2,int(m**0.5)+1):",
-                "    while m%i==0:",
-                "        pf[i]=pf.get(i,0)+1",
-                "        m//=i",
-                "if m>1:pf[m]=1",
-                "print(pf)"
-                ]
-            },
-            {
-                "name": "deque",
-                "snippet": [
-                 "from collections import deque",
-                 "# q = deque([0])",
-                 "# while q:",
-                 "#     x = q.pop()",
-                 "#     q.append(1)",
-                 "#     y = q.popleft()"
-                ]
-            },
-            {
-                "name": "Combination",
-                "snippet": [
-                "MOD = 998244353",
-                "table_len = 301 # nCk の max(n)+1",
-                "",
-                "fac = [1, 1]",
-                "for i in range(2, table_len):",
-                "    fac.append(fac[-1] * i % MOD)",
-                "",
-                "finv = [0] * table_len",
-                "finv[-1] = pow(fac[-1], MOD - 2, MOD)",
-                "",
-                "for i in range(table_len - 1, 0, -1):",
-                "    finv[i - 1] = finv[i] * i % MOD",
-                "",
-                "",
-                "def comb(n, k):",
-                "    return fac[n] * finv[k] * finv[n - k] % MOD",
-                "",
-                "inv2 = pow(2, MOD-2, MOD)"
-                ]
-            },
             {
                 "name": "BFS on 2D map",
                 "snippet": [
@@ -495,23 +635,6 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 ]
             },
             {
-                "name": "accumulate",
-                "snippet": [
-                "from itertools import accumulate",
-                "",
-                "def accum_list(ls):",
-                "    return list(accumulate(ls))"
-                ]
-            },
-            {
-                "name": "順列",
-                "snippet": [
-                    "from itertools import permutations",
-                    "",
-                    "list(permutations(range(5)))"
-                ]
-            },
-            {
                 "name": "graph",
                 "snippet": [
                 "from collections import deque",
@@ -559,8 +682,8 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 "from collections import deque",
                 "",
                 "N = int(input())",
-                "ab = [[0] * 2 for _ in range(N)]  # edge a -> b",
-                "for i in range(N):",
+                "ab = [[0] * 2 for _ in range(N - 1)]  # edge a -> b",
+                "for i in range(N - 1):",
                 "    a, b = list(map(int, input().split()))",
                 "    ab[i] = [a - 1, b - 1]",
                 "nb = [set() for _ in range(N)]  # neighbor",
@@ -588,6 +711,13 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 "        if depth[to] > d:  # go deeper and deeper (instead of checking visited)",
                 "            q.append(to)",
                 "            #####",
+                "",
+                "# DFS recursion",
+                "def dfs(at, was):",
+                "    for i in nb[at]:",
+                "        if i == was:",
+                "            continue",
+                "        dfs(i, at)",
                 "",
                 "# BFS (Breadth First Search)",
                 "q = deque([0])",
@@ -655,6 +785,83 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
                 "                if s>>j & 1:",
                 "                    dp[s][j] = min(dp[s][j], dp[s^(1<<j)][i] + dist[i][j])"
                 ]
+            },
+            {
+                "name": "BIT",
+                "snippet": [
+                "class BIT:",
+                "    def __init__(self, n, mod=0):  # 全要素数",
+                "        self._n = n  # _n に全要素数を格納",
+                "        self.data = [0] * n",
+                "        self.mod = mod",
+                "",
+                "    def add(self, p, x):  # p は 0-indexed",
+                "        assert 0 <= p < self._n",
+                "        p += 1  # 0-indexed ==> 1-indexed",
+                "        while p <= self._n:",
+                "            self.data[p - 1] += x",
+                "            if self.mod:",
+                "                self.data[p - 1] %= self.mod",
+                "            p += p & -p  # p & -p = LSB(p)",
+                "",
+                "    def _sum(self, r):",
+                "        s = 0",
+                "        while r > 0:",
+                "            s += self.data[r - 1]",
+                "            if self.mod:",
+                "                s %= self.mod",
+                "            r -= r & -r",
+                "        return s",
+                "",
+                "    def sum(self, l, r):",
+                "        assert 0 <= l <= r <= self._n",
+                "        return self._sum(r) - self._sum(l)",
+                ]
+            },
+            {
+                "name": "BIT 2D",
+                "snippet": [
+                "# https://tjkendev.github.io/procon-library/python/range_query/bit.html",
+                "class BIT2:",
+                "    # H*W",
+                "    def __init__(self, h, w):",
+                "        self.w = w",
+                "        self.h = h",
+                "        self.data = [{} for i in range(h+1)]",
+                "",
+                "    # O(logH*logW)",
+                "    def sum(self, i, j): # i,j は 1-indexed",
+                "        s = 0",
+                "        data = self.data",
+                "        while i > 0:",
+                "            el = data[i]",
+                "            k = j",
+                "            while k > 0:",
+                "                s += el.get(k, 0)",
+                "                k -= k & -k",
+                "            i -= i & -i",
+                "        return s",
+                "",
+                "    # O(logH*logW)",
+                "    def add(self, i, j, x): # i,j は 1-indexed",
+                "        w = self.w; h = self.h",
+                "        data = self.data",
+                "        while i <= h:",
+                "            el = data[i]",
+                "            k = j",
+                "            while k <= w:",
+                "                el[k] = el.get(k, 0) + x",
+                "                k += k & -k",
+                "            i += i & -i",
+                "",
+                "    # [x0, x1) x [y0, y1)",
+                "    def range_sum(self, x0, x1, y0, y1): # 0-indexed !!!!!",
+                "        return self.sum(x1, y1) - self.sum(x1, y0) - self.sum(x0, y1) + self.sum(x0, y0)",
+                "",
+                "    # handmade",
+                "    def value(self, x, y): # 1-indexed",
+                "        return self.range_sum(x-1, x, y-1, y)"
+                ]
             }
         ]
     };
@@ -672,8 +879,10 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
     snippets_menu.options['menus'][0]['sub-menu'].push(my_favorites2);
     snippets_menu.options['menus'][0]['sub-menu'].push(my_favorites3);
     snippets_menu.options['menus'][0]['sub-menu'].push(my_favorites4);
+    snippets_menu.options['menus'][0]['sub-menu'].push(data_analysis);
+    snippets_menu.options['menus'].push(compe_io);
+    snippets_menu.options['menus'].push(lists);
     snippets_menu.options['menus'].push(my_favorites);
-    snippets_menu.options['menus'].push(compe1);
-    snippets_menu.options['menus'].push(compe2);
+    snippets_menu.options['menus'].push(compe_basic);
     console.log('Loaded `snippets_menu` customizations from `custom.js`');
 });
