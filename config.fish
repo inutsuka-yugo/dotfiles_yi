@@ -73,6 +73,7 @@ alias win='explorer.exe .'
 alias frun='source ~/.config/fish/config.fish'
 alias yok='cd ~/yokada_lab'
 alias pythonyok='cd ~/yokada_lab/python; conda activate yok'
+alias compe='cd ~/yokada_lab/python/compe_program; /mnt/c/Program\ Files/AutoHotkey/AutoHotkey.exe python_input.ahk&; conda activate yok; jup'
 
 alias g='git'
 alias gitignore='vim .gitignore'
